@@ -2,10 +2,12 @@
 let people = [
     {
         name: "Abe",
-        message: "Good day to you Sir!"
+        message: "Good day to you Sir!",
+        heightInInches: 73
     },{
         name: "Jeff",
-        message: "mynamesJeeffff"
+        message: "mynamesJeeffff",
+        heightInInches: 65
     }
 ];
 
@@ -40,3 +42,62 @@ function myFilterFunction(person){  //the filter function will check an element 
 let filteredArray = people.filter(myFilterFunction); //when the function returns true. add element to new array
 
 console.log(filteredArray)
+
+//anonymous callback function - only used once
+let newFilteredArray = people.filter(function (person){
+    if (person.name[0] =="A") {     //for every persons first name letter chekc if its J    
+        return true;                //if its a J return true
+    }else {
+        return false;               //otherwise return false
+    }
+})
+console.log(newFilteredArray)
+
+//Array.map
+
+function getNames(person){      //perform the function on the array person
+    return person.name;         //for person.name, return name for each element
+}
+let names =people.map(getNames);    //works like the 'for' statement that goes through each element
+                                    //this will add the returned value to a new array
+console.log (names);
+
+function convertHeightToCm(person){
+    return{
+        name: person.name,                         //output is the same
+        message: person.message,                    //output is the same
+        heightInCm: person.heightInInches * 2.54     //output is changed
+    }
+}
+let peopleCm = people.map(convertHeightToCm); // outputs each element with the change
+console.log(people);
+console.log(peopleCm);
+
+
+//Array.find
+//finds ONLY FIRST element in the array
+let animal = [
+    {
+        name: "Melman",
+        species: "Giraffe",
+        heightInInches: 196
+    },{
+        name: "Marty",
+        species: "Zebra",
+        heightInInches: 60
+    },{
+        name: "Alex",
+        species: "Lion",
+        heightInInches: 47
+    },{
+        name: "Gloria",
+        species: "Hippo",
+        heightInInches: 60
+    }
+];
+
+function findUnder65(animal){
+    return animal.heightInInches > 65;
+}
+let newAnimal = animal.find(findUnder65);
+console.log(newAnimal);
