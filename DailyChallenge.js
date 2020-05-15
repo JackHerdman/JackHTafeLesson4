@@ -33,17 +33,17 @@ let pets = [
   //pets{name, age, ownerId};
   //people{name, id};
 
-function mapPet(pet){
-    function findPersonByID(owner){
-        return owner.id == pet.ownerId
+function mapPet(pet){                         //runs the function with every element in pets running as pet
+    function findPersonByID(owner){           //inside the main function run a second function
+        return owner.id == pet.ownerId        //if the person id matches the pet id return the person
     }
-    let owner = people.find(findPersonByID);
-    return{
-        name:pet.name,
-        age: pet.age,
-        owner: owner.name
+    let owner = people.find(findPersonByID);  //find an person that meets the function
+    return{                                   //return the pet, 
+        name:pet.name,                        //pets name,, 
+        age: pet.age,                         //pet age,
+        owner: owner.name                     //and if the name matched, return the matching name
     } 
 }
 
-let detailedPets = pets.map(mapPet);
-console.log(detailedPets);
+let detailedPets = pets.map(mapPet);          //creates a new array with the function mapPet
+console.log(detailedPets);                    //output to console the new array
